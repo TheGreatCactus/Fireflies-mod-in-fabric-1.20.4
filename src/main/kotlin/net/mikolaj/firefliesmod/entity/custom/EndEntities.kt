@@ -4,20 +4,19 @@ import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttribute
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.registry.Registry
-import net
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
 import net.mikolaj.firefliesmod.FirefliesMod
 import net.minecraft.entity.EntityDimensions
+import net.minecraft.entity.SpawnGroup
 
 object EndEntities {
     internal fun <T : Entity?> register(
         name: String?,
-        group: MobCategory?,
+        group: SpawnGroup,
         width: Float,
         height: Float,
         entity: EntityType.EntityFactory<T>?
     ): EntityType<T> {
-        val id: ResourceLocation = FirefliesMod.MOD_ID(name)
         val type: EntityType<T> = FabricEntityTypeBuilder
             .create(group, entity)
             .dimensions(EntityDimensions.fixed(width, height))
