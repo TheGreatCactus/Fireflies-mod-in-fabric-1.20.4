@@ -10,16 +10,19 @@ import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
+import kotlin.reflect.KFunction0
 
 object ModEntities {
-    val BOTTLED_FIREFLIES_ENTITY = registerEntity("bottled_fireflies_entity", BottledFirefliesEntity, 0.25f,0.25f)
+    val BOTTLED_FIREFLIES_ENTITY : EntityType<BottledFirefliesEntity> = registerEntity("bottled_fireflies_entity",
+        BottledFirefliesEntity::class.java::newInstance, 0.25f,0.25f)
 
-    fun <T : Entity> registerEntity(name : String, entity: T, x : Float, y : Float) {
-        Registry.register<EntityType<*>, EntityType<*>>(
+    fun <T : Entity>registerEntity(name: String, entity: KFunction0<BottledFirefliesEntity>, x: Float, y: Float): EntityType<T> {
+         val type = Registry.register<EntityType<*>, EntityType<T>>(
             Registries.ENTITY_TYPE,
             Identifier(FirefliesMod.MOD_ID, name),
             FabricEntityTypeBuilder.create<T>(SpawnGroup.MISC)
                 .dimensions(EntityDimensions.fixed(x, y)).build()
         )
+        return type
     }
 }
