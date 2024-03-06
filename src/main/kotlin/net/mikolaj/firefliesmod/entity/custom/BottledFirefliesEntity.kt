@@ -12,7 +12,7 @@ class BottledFirefliesEntity : ThrownItemEntity {
 
     constructor(entityType: EntityType<ThrownItemEntity>, world: World) : super(entityType, world)
 
-    constructor(owner: LivingEntity, world: World) : super(ModEntities.BOTTLED_FIREFLIES_ENTITY, world)
+    constructor(owner: LivingEntity, world: World) : super(ModEntities.BOTTLED_FIREFLIES_ENTITY, owner, world)
 
     override fun getDefaultItem(): Item? {
         return null
