@@ -16,11 +16,11 @@ object ModEntities {
     val BOTTLED_FIREFLIES_ENTITY : EntityType<BottledFirefliesEntity> = registerEntity("bottled_fireflies_entity",
         BottledFirefliesEntity::class.java::newInstance, 0.25f,0.25f)
 
-    fun <T : Entity>registerEntity(name: String, entity: KFunction0<BottledFirefliesEntity>, x: Float, y: Float): EntityType<T> {
+    fun <T : Entity>registerEntity(name: String, entity: KFunction0<T>, x: Float, y: Float): EntityType<T> {
          val type = Registry.register<EntityType<*>, EntityType<T>>(
             Registries.ENTITY_TYPE,
             Identifier(FirefliesMod.MOD_ID, name),
-            FabricEntityTypeBuilder.create<T>(SpawnGroup.MISC)
+            FabricEntityTypeBuilder.create<T>(SpawnGroup.MISC, entity as EntityType.EntityFactory<T>)
                 .dimensions(EntityDimensions.fixed(x, y)).build()
         )
         return type
