@@ -10,7 +10,7 @@ import net.minecraft.world.World
 
 class BottledFirefliesEntity : ThrownItemEntity {
 
-    constructor(entiyType: EntityType<ThrownItemEntity>, world: World) : super(entiyType, world)
+    constructor(entityType: EntityType<ThrownItemEntity>, world: World) : super(entityType, world)
 
     constructor(owner: LivingEntity, world: World) : super(ModEntities.BOTTLED_FIREFLIES_ENTITY, world)
 
