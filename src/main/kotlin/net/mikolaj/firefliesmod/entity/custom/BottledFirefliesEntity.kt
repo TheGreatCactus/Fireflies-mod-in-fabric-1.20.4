@@ -1,6 +1,6 @@
 package net.mikolaj.firefliesmod.entity.custom
 
-import net.mikolaj.firefliesmod.mixin.ModEntities
+import net.mikolaj.firefliesmod.entity.ModEntities
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity
