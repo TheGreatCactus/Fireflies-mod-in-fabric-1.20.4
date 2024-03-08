@@ -29,4 +29,8 @@ object ModEntities : PlatformRegistry<Registry<EntityType<*>>, RegistryKey<Regis
         EntityType.Builder.create({ _, world -> BottledFirefliesEntity(world) }, SpawnGroup.MISC)
             .build(BOTTLED_FIREFLIES_KEY.toString())
     )
+
+    fun registerEntityTypes() {
+        ModEntities.register { identifier, type -> Registry.register(registry, identifier, type) }
+    }
 }

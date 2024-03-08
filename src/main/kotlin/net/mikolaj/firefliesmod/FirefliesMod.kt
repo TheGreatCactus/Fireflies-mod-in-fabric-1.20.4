@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 import net.mikolaj.firefliesmod.entity.ModEntities
 import net.minecraft.registry.Registry
 
-object FirefliesMod : ModInitializer, FirefliesImplementation {
+object FirefliesMod : ModInitializer {
 	const val MOD_ID = "firefliesmod"
 	val LOGGER = LoggerFactory.getLogger(MOD_ID)
 
@@ -17,9 +17,6 @@ object FirefliesMod : ModInitializer, FirefliesImplementation {
 		// Proceed with mild caution.
 		ModItems.registerModItems()
 		ModItemGroups.registerItemGroups()
-	}
-
-	override fun registerEntityTypes() {
-		ModEntities.register { identifier, type -> Registry.register(ModEntities.registry, identifier, type) }
+		ModEntities.registerEntityTypes()
 	}
 }

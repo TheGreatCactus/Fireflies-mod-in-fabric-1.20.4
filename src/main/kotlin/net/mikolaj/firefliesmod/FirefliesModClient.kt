@@ -6,9 +6,12 @@ import net.mikolaj.firefliesmod.entity.custom.BottledFirefliesEntity
 import net.mikolaj.firefliesmod.entity.ModEntities
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer
+import net.minecraft.entity.FlyingItemEntity
 
 object FirefliesModClient : ClientModInitializer {
     override fun onInitializeClient() {
-        EntityRendererRegistry.register(ModEntities.BOTTLED_FIREFLIES_ENTITY, FlyingItemEntityRenderer::class.java.newInstance() as EntityRendererFactory<BottledFirefliesEntity>)
+        EntityRendererRegistry.register(ModEntities.BOTTLED_FIREFLIES_ENTITY,
+            ::FlyingItemEntityRenderer
+        )
     }
 }

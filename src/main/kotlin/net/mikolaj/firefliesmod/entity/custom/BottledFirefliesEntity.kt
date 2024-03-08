@@ -10,9 +10,9 @@ import net.minecraft.world.World
 
 class BottledFirefliesEntity : ThrownItemEntity {
 
-    constructor(entityType: EntityType<out BottledFirefliesEntity> = ModEntities.BOTTLED_FIREFLIES_ENTITY, world: World) : super(entityType, world)
+    constructor(world: World, entityType: EntityType<out BottledFirefliesEntity> = ModEntities.BOTTLED_FIREFLIES_ENTITY) : super(entityType, world)
 
-    constructor(entityType : EntityType<out BottledFirefliesEntity> = ModEntities.BOTTLED_FIREFLIES_ENTITY, owner: LivingEntity, world: World) : super(entityType, owner, world)
+    constructor(owner: LivingEntity, world: World, entityType : EntityType<out BottledFirefliesEntity> = ModEntities.BOTTLED_FIREFLIES_ENTITY) : super(entityType, owner, world)
 
     override fun getDefaultItem(): Item? {
         return null
