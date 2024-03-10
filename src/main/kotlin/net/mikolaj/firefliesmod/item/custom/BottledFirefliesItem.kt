@@ -16,9 +16,11 @@ class BottledFirefliesItem : Item(Settings()) {
         if (!world.isClient) {
             val bottledFirefliesEntity = BottledFirefliesEntity(user, world)
             bottledFirefliesEntity.setItem(ItemStack(this))
-            bottledFirefliesEntity.setVelocity(user, user.pitch, user.yaw, 0.0f, 1.5f, 1.0f)
+            bottledFirefliesEntity.setVelocity(user, user.pitch, user.yaw, -5.0f, 2.2f, 1.0f)
             world.spawnEntity(bottledFirefliesEntity)
+
         }
         return TypedActionResult.success(user.getStackInHand(hand), world.isClient)
+
     }
 }

@@ -22,7 +22,12 @@ class BottledFirefliesEntity : ThrownItemEntity {
         super.onCollision(hitResult)
         if (!this.world.isClient) {
             this.world.createExplosion(this, this.x, this.y, this.z, 3F, true, World.ExplosionSourceType.BLOW)
+            this.discard()
         }
+    }
+
+    override fun getGravity(): Float {
+        return 0.05f
     }
 
 }
