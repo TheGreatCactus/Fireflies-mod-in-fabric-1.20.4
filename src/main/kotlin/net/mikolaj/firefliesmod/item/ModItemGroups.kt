@@ -1,8 +1,7 @@
-package net.kaupenjoe.tutorialmod.item
+package net.mikolaj.firefliesmod.item
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.mikolaj.firefliesmod.FirefliesMod
-import net.mikolaj.firefliesmod.item.ModItems
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
@@ -20,6 +19,7 @@ object ModItemGroups {
                 entries.add(ModItems.RUBY)
                 entries.add(ModItems.RAW_RUBY)
                 entries.add(Items.DIAMOND)
+                entries.add(ModItems.BOTTLED_FIREFLIES)
             }.build()
     )
 

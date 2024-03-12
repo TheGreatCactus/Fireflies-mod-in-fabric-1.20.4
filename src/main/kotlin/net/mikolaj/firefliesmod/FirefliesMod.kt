@@ -1,10 +1,10 @@
 package net.mikolaj.firefliesmod
 
 import net.fabricmc.api.ModInitializer
-import net.kaupenjoe.tutorialmod.item.ModItemGroups
 import net.mikolaj.firefliesmod.item.ModItems
 import org.slf4j.LoggerFactory
 import net.mikolaj.firefliesmod.entity.ModEntities
+import net.mikolaj.firefliesmod.item.ModItemGroups
 import net.minecraft.registry.Registry
 
 object FirefliesMod : ModInitializer {

@@ -15,16 +15,12 @@ import net.minecraft.advancement.criterion.Criterion
 import net.minecraft.block.ComposterBlock
 import net.minecraft.command.argument.serialize.ArgumentSerializer
 import net.minecraft.item.ItemConvertible
-import net.minecraft.network.PacketByteBuf
-import net.minecraft.network.listener.ClientPlayPacketListener
-import net.minecraft.network.packet.Packet
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceReloader
 import net.minecraft.resource.ResourceType
 import net.minecraft.server.MinecraftServer
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.world.GameRules
