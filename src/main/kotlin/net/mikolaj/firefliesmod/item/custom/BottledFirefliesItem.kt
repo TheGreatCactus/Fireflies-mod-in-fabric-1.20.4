@@ -15,7 +15,6 @@ class BottledFirefliesItem : Item(Settings()) {
         user.itemCooldownManager.set(this, 10)
         if (!world.isClient) {
             val bottledFirefliesEntity = BottledFirefliesEntity(user, world)
-            bottledFirefliesEntity.setItem(ItemStack(this))
             bottledFirefliesEntity.setVelocity(user, user.pitch, user.yaw, -5.0f, 2.2f, 1.0f)
             world.spawnEntity(bottledFirefliesEntity)
 
