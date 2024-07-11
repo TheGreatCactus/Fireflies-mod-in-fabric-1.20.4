@@ -6,6 +6,7 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.entity.projectile.thrown.ThrownEntity
 import net.minecraft.util.Identifier
 import javax.swing.text.html.parser.Entity
 
@@ -18,7 +19,8 @@ class BottledFirefliesRenderer(context : EntityRendererFactory.Context) : Entity
     }
 
     override fun render(entity: BottledFirefliesEntity?, yaw : Float, partialTicks : Float, poseStack : MatrixStack, buffer : VertexConsumerProvider, packedLight : Int) {
-        val model =
+
+        super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight)
     }
 
 }
