@@ -3,18 +3,18 @@ package net.mikolaj.firefliesmod.entity.client
 import net.mikolaj.firefliesmod.FirefliesMod
 import net.mikolaj.firefliesmod.entity.custom.BottledFirefliesEntity
 import net.minecraft.client.render.VertexConsumerProvider
-import net.minecraft.client.render.entity.EntityRenderer
-import net.minecraft.client.render.entity.EntityRendererFactory
-import net.minecraft.client.render.entity.FlyingItemEntityRenderer
-import net.minecraft.client.render.entity.ProjectileEntityRenderer
+import net.minecraft.client.render.entity.*
+import net.minecraft.client.render.entity.feature.FeatureRendererContext
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.projectile.thrown.ThrownEntity
 import net.minecraft.util.Identifier
 import javax.swing.text.html.parser.Entity
 
-class BottledFirefliesRenderer(context : EntityRendererFactory.Context) : EntityRenderer<BottledFirefliesEntity>(context, ) {
-
-    val TEXTURE : Identifier = Identifier(FirefliesMod.MOD_ID, "textures/entity/bottled_fireflies.png")
+class BottledFirefliesRenderer(context : EntityRendererFactory.Context) :
+    EntityRenderer<BottledFirefliesEntity>(context, ),
+    FeatureRendererContext<BottledFirefliesEntity, BottledFirefliesModel<BottledFirefliesEntity>> {
+        val context  = context
+        val TEXTURE : Identifier = Identifier(FirefliesMod.MOD_ID, "textures/entity/bottled_fireflies.png")
 
     override fun getTexture(entity: BottledFirefliesEntity?): Identifier? {
         return TEXTURE
@@ -23,6 +23,10 @@ class BottledFirefliesRenderer(context : EntityRendererFactory.Context) : Entity
     override fun render(entity: BottledFirefliesEntity?, yaw : Float, partialTicks : Float, poseStack : MatrixStack, buffer : VertexConsumerProvider, packedLight : Int) {
 
         super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight)
+    }
+
+    override fun getModel(): BottledFirefliesModel<BottledFirefliesEntity> {
+        return BottledFirefliesModel(context.getPart(ModModelLayers.BOTTLED_FIREFLIES))
     }
 
 }

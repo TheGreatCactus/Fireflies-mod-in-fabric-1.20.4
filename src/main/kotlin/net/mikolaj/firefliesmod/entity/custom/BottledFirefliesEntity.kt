@@ -16,7 +16,6 @@ class BottledFirefliesEntity : ThrownEntity {
     constructor(owner: LivingEntity, world: World, entityType : EntityType<out BottledFirefliesEntity> = ModEntities.BOTTLED_FIREFLIES_ENTITY) : super(entityType, owner, world)
 
     override fun initDataTracker() {
-        TODO("Not yet implemented")
     }
 
     override fun onCollision(hitResult: HitResult?) {
