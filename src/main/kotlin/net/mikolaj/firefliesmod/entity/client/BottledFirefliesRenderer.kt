@@ -12,7 +12,7 @@ import javax.swing.text.html.parser.Entity
 
 class BottledFirefliesRenderer(context : EntityRendererFactory.Context) :
     EntityRenderer<BottledFirefliesEntity>(context, ),
-    FeatureRendererContext<BottledFirefliesEntity, BottledFirefliesModel<BottledFirefliesEntity>> {
+    FeatureRendererContext<BottledFirefliesEntity, BottledFirefliesModel> {
         val context  = context
         val TEXTURE : Identifier = Identifier(FirefliesMod.MOD_ID, "textures/entity/bottled_fireflies.png")
 
@@ -25,7 +25,7 @@ class BottledFirefliesRenderer(context : EntityRendererFactory.Context) :
         super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight)
     }
 
-    override fun getModel(): BottledFirefliesModel<BottledFirefliesEntity> {
+    override fun getModel(): BottledFirefliesModel {
         return BottledFirefliesModel(context.getPart(ModModelLayers.BOTTLED_FIREFLIES))
     }
 

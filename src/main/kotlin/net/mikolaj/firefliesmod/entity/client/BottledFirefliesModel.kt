@@ -10,7 +10,7 @@ import net.minecraft.client.render.entity.model.EntityModel
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.Entity
 
-class BottledFirefliesModel<T>(root: ModelPart) : EntityModel<BottledFirefliesEntity>() {
+class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntity>() {
     private val butelka: ModelPart
     private val butelka1: ModelPart? = null
     private val butelka2: ModelPart? = null
@@ -47,7 +47,7 @@ class BottledFirefliesModel<T>(root: ModelPart) : EntityModel<BottledFirefliesEn
     }
 
     override fun setAngles(
-        entity: BottledFirefliesEntity?,
+        entity: BottledFirefliesEntity,
         limbAngle: Float,
         limbDistance: Float,
         animationProgress: Float,

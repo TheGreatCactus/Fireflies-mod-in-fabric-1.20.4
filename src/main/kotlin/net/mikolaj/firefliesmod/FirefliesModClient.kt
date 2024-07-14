@@ -7,6 +7,8 @@ import net.mikolaj.firefliesmod.entity.ModEntities
 import net.mikolaj.firefliesmod.entity.client.BottledFirefliesModel
 import net.mikolaj.firefliesmod.entity.client.BottledFirefliesRenderer
 import net.mikolaj.firefliesmod.entity.client.ModModelLayers
+import net.mikolaj.firefliesmod.entity.custom.BottledFirefliesEntity
+
 object FirefliesModClient : ClientModInitializer {
     override fun onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.BOTTLED_FIREFLIES_ENTITY, ::BottledFirefliesRenderer);
