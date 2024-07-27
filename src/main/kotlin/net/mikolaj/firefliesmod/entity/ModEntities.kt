@@ -4,6 +4,7 @@ import kotlinx.coroutines.withTimeout
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
 import net.mikolaj.firefliesmod.FirefliesMod
 import net.mikolaj.firefliesmod.entity.custom.BottledFirefliesEntity
+import net.mikolaj.firefliesmod.entity.custom.SigmaEntity
 import net.mikolaj.firefliesmod.platform.PlatformRegistry
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
@@ -27,7 +28,17 @@ object ModEntities : PlatformRegistry<Registry<EntityType<*>>, RegistryKey<Regis
     val BOTTLED_FIREFLIES_ENTITY : EntityType<BottledFirefliesEntity> = this.create(
         BOTTLED_FIREFLIES_KEY.path,
         EntityType.Builder.create({ _, world -> BottledFirefliesEntity(world) }, SpawnGroup.MISC)
-            .build(BOTTLED_FIREFLIES_KEY.toString())
+            .setDimensions(1f,1f).build(BOTTLED_FIREFLIES_KEY.toString())
+    )
+
+
+    @JvmField
+    val SIGMA_ENTITY_KEY = Identifier(FirefliesMod.MOD_ID, "sigma_entity")
+    @JvmField
+    val SIGMA_ENTITY = this.create(
+        SIGMA_ENTITY_KEY.path,
+        EntityType.Builder.create(::SigmaEntity, SpawnGroup.MISC)
+            .setDimensions(1f,1f).build(SIGMA_ENTITY_KEY.toString())
     )
 
     fun registerEntityTypes() {

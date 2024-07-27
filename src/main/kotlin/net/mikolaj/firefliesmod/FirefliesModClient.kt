@@ -7,10 +7,12 @@ import net.mikolaj.firefliesmod.entity.ModEntities
 import net.mikolaj.firefliesmod.entity.client.BottledFirefliesModel
 import net.mikolaj.firefliesmod.entity.client.BottledFirefliesRenderer
 import net.mikolaj.firefliesmod.entity.client.ModModelLayers
-import net.mikolaj.firefliesmod.entity.custom.BottledFirefliesEntity
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer
 
 object FirefliesModClient : ClientModInitializer {
     override fun onInitializeClient() {
+        EntityRendererRegistry.register(ModEntities.SIGMA_ENTITY, ::FlyingItemEntityRenderer)
+
         EntityRendererRegistry.register(ModEntities.BOTTLED_FIREFLIES_ENTITY, ::BottledFirefliesRenderer);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BOTTLED_FIREFLIES, BottledFirefliesModel::texturedModelData);
     }

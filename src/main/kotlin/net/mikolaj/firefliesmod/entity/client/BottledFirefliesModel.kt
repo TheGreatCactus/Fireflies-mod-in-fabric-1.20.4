@@ -1,4 +1,4 @@
-// Made with Blockbench 4.9.4
+// Made with Blockbench 4.10.4
 // Exported for Minecraft version 1.17+ for Yarn
 // Paste this class into your mod and generate all required imports
 package net.mikolaj.firefliesmod.entity.client
@@ -8,20 +8,9 @@ import net.minecraft.client.model.*
 import net.minecraft.client.render.VertexConsumer
 import net.minecraft.client.render.entity.model.EntityModel
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.entity.Entity
 
-class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntity>() {
+class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntity?>() {
     private val butelka: ModelPart
-    private val butelka1: ModelPart? = null
-    private val butelka2: ModelPart? = null
-    private val butelka3: ModelPart? = null
-    private val butelka4: ModelPart? = null
-    private val butelka5: ModelPart? = null
-    private val butelka6: ModelPart? = null
-    private val naronik1: ModelPart? = null
-    private val naronik2: ModelPart? = null
-    private val naronik3: ModelPart? = null
-    private val naronik4: ModelPart? = null
     private val srodekbutelki: ModelPart
     private val bb_main: ModelPart
 
@@ -29,6 +18,17 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
         butelka = root.getChild("butelka")
         srodekbutelki = root.getChild("srodekbutelki")
         bb_main = root.getChild("bb_main")
+    }
+
+    override fun setAngles(
+        entity: BottledFirefliesEntity?,
+        limbSwing: Float,
+        limbSwingAmount: Float,
+        ageInTicks: Float,
+        netHeadYaw: Float,
+        headPitch: Float
+    ) {
+        println("sex")
     }
 
     override fun render(
@@ -46,16 +46,7 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
         bb_main.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha)
     }
 
-    override fun setAngles(
-        entity: BottledFirefliesEntity,
-        limbAngle: Float,
-        limbDistance: Float,
-        animationProgress: Float,
-        headYaw: Float,
-        headPitch: Float
-    ) {
-        println("I don't know what the fuck should I put here")
-    }
+
 
     companion object {
         val texturedModelData: TexturedModelData

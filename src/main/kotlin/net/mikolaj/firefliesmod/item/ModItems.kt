@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.mikolaj.firefliesmod.FirefliesMod
 import net.mikolaj.firefliesmod.item.custom.BottledFirefliesItem
+import net.mikolaj.firefliesmod.item.custom.SigmaItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
@@ -16,6 +17,7 @@ object ModItems {
     final val RUBY = registerItem("ruby", Item(FabricItemSettings()))
     final val RAW_RUBY = registerItem("raw_ruby", Item(FabricItemSettings()))
     final val BOTTLED_FIREFLIES = registerItem("bottled_fireflies", BottledFirefliesItem())
+    val SIGMA_ITEM = registerItem("sigma_item", SigmaItem())
 
    private fun registerItem(name: String, item: Item): Item {
        return Registry.register(Registries.ITEM, Identifier(FirefliesMod.MOD_ID, name), item)
@@ -25,6 +27,7 @@ object ModItems {
         entries.add(RUBY)
         entries.add((RAW_RUBY))
         entries.add(BOTTLED_FIREFLIES)
+        entries.add((SIGMA_ITEM))
     }
 
     fun registerModItems() {

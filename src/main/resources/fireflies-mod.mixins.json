@@ -2,8 +2,9 @@
 	"required": true,
 	"package": "net.mikolaj.firefliesmod.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ExampleMixin"
+	"mixins": [],
+	"client": [
+		"MixinDrawContext"
 	],
 	"injectors": {
 		"defaultRequire": 1
