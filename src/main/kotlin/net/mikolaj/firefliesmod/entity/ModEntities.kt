@@ -1,13 +1,10 @@
 package net.mikolaj.firefliesmod.entity
 
-import kotlinx.coroutines.withTimeout
-import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
 import net.mikolaj.firefliesmod.FirefliesMod
 import net.mikolaj.firefliesmod.entity.custom.BottledFirefliesEntity
+import net.mikolaj.firefliesmod.entity.custom.FirefliesEntity
 import net.mikolaj.firefliesmod.entity.custom.SigmaEntity
 import net.mikolaj.firefliesmod.platform.PlatformRegistry
-import net.minecraft.entity.Entity
-import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registries
@@ -15,8 +12,6 @@ import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.util.Identifier
-import net.minecraft.world.World
-import kotlin.reflect.KFunction0
 
 object ModEntities : PlatformRegistry<Registry<EntityType<*>>, RegistryKey<Registry<EntityType<*>>>, EntityType<*>>() {
     override val registry : Registry<EntityType<*>> = Registries.ENTITY_TYPE
@@ -39,6 +34,15 @@ object ModEntities : PlatformRegistry<Registry<EntityType<*>>, RegistryKey<Regis
         SIGMA_ENTITY_KEY.path,
         EntityType.Builder.create(::SigmaEntity, SpawnGroup.MISC)
             .setDimensions(1f,1f).build(SIGMA_ENTITY_KEY.toString())
+    )
+
+    @JvmField
+    val FIREFLIES_ENTITY_KEY = Identifier(FirefliesMod.MOD_ID, "fireflies_entity")
+    @JvmField
+    val FIREFLIES_ENTITY : EntityType<FirefliesEntity> = create(
+        FIREFLIES_ENTITY_KEY.path,
+        EntityType.Builder.create({ _, world -> FirefliesEntity(world) }, SpawnGroup.MISC)
+            .setDimensions(1f, 1f).build(FIREFLIES_ENTITY_KEY.toString())
     )
 
     fun registerEntityTypes() {

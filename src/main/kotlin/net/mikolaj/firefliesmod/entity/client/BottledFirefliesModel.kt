@@ -8,8 +8,9 @@ import net.minecraft.client.model.*
 import net.minecraft.client.render.VertexConsumer
 import net.minecraft.client.render.entity.model.EntityModel
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.entity.Entity
 
-class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntity?>() {
+class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntity>() {
     private val butelka: ModelPart
     private val srodekbutelki: ModelPart
     private val bb_main: ModelPart
@@ -28,7 +29,6 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
         netHeadYaw: Float,
         headPitch: Float
     ) {
-        println("sex")
     }
 
     override fun render(
@@ -45,8 +45,6 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
         srodekbutelki.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha)
         bb_main.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha)
     }
-
-
 
     companion object {
         val texturedModelData: TexturedModelData
@@ -73,7 +71,7 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
                         .uv(0, 0).cuboid(0.0f, -1.0f, -4.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(0.0f, -1.0f, 2.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(0.0f, 0.0f, -3.0f, 1.0f, 1.0f, 5.0f, Dilation(0.0f)),
-                    ModelTransform.pivot(-1.0f, -1.0f, 0.0f)
+                    ModelTransform.pivot(-2.0f, -1.0f, 0.0f)
                 )
                 val butelka2 = butelka.addChild(
                     "butelka2",
@@ -90,7 +88,7 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
                         .uv(0, 0).cuboid(0.0f, -1.0f, -4.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(0.0f, -1.0f, 2.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(0.0f, 0.0f, -3.0f, 1.0f, 1.0f, 5.0f, Dilation(0.0f)),
-                    ModelTransform.pivot(0.0f, -1.0f, 0.0f)
+                    ModelTransform.pivot(-1.0f, -1.0f, 0.0f)
                 )
                 val butelka3 = butelka.addChild(
                     "butelka3",
@@ -107,7 +105,7 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
                         .uv(0, 0).cuboid(0.0f, -1.0f, -4.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(0.0f, -1.0f, 2.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(0.0f, 0.0f, -3.0f, 1.0f, 1.0f, 5.0f, Dilation(0.0f)),
-                    ModelTransform.pivot(-2.0f, -1.0f, 0.0f)
+                    ModelTransform.pivot(0.0f, -1.0f, 0.0f)
                 )
                 val butelka4 = butelka.addChild(
                     "butelka4",
@@ -160,46 +158,54 @@ class BottledFirefliesModel(root: ModelPart) : EntityModel<BottledFirefliesEntit
                         .uv(0, 0).cuboid(0.0f, 0.0f, -3.0f, 1.0f, 1.0f, 5.0f, Dilation(0.0f)),
                     ModelTransform.of(-1.0f, -1.0f, -2.0f, 0.0f, -1.5708f, 0.0f)
                 )
-                val naronik1 = butelka.addChild(
-                    "naronik1",
+                val naroznik1 = butelka.addChild(
+                    "naroznik1",
                     ModelPartBuilder.create().uv(0, 0).cuboid(1.0f, -2.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(1.0f, -8.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(1.0f, -7.0f, 2.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(2.0f, -7.0f, 1.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f)),
                     ModelTransform.pivot(0.0f, 0.0f, 0.0f)
                 )
-                val naronik2 = butelka.addChild(
-                    "naronik2",
+                val naroznik2 = butelka.addChild(
+                    "naroznik2",
+                    ModelPartBuilder.create().uv(0, 0).cuboid(2.0f, -2.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
+                        .uv(0, 0).cuboid(2.0f, -8.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
+                        .uv(0, 0).cuboid(2.0f, -7.0f, 2.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f))
+                        .uv(0, 0).cuboid(3.0f, -7.0f, 1.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f)),
+                    ModelTransform.of(-1.0f, 0.0f, -1.0f, 0.0f, -1.5708f, 0.0f)
+                )
+                val naroznik3 = butelka.addChild(
+                    "naroznik3",
                     ModelPartBuilder.create().uv(0, 0).cuboid(1.0f, -2.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(1.0f, -8.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(1.0f, -7.0f, 2.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(2.0f, -7.0f, 1.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f)),
                     ModelTransform.of(0.0f, 0.0f, -1.0f, 0.0f, 1.5708f, 0.0f)
                 )
-                val naronik3 = butelka.addChild(
-                    "naronik3",
+                val naroznik4 = butelka.addChild(
+                    "naroznik4",
                     ModelPartBuilder.create().uv(0, 0).cuboid(1.0f, -2.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(1.0f, -8.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(1.0f, -7.0f, 2.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 0).cuboid(2.0f, -7.0f, 1.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f)),
                     ModelTransform.of(-1.0f, 0.0f, -1.0f, 0.0f, 3.1416f, 0.0f)
                 )
-                val naronik4 = butelka.addChild(
-                    "naronik4",
-                    ModelPartBuilder.create().uv(0, 0).cuboid(1.0f, -2.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
-                        .uv(0, 0).cuboid(1.0f, -8.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
-                        .uv(0, 0).cuboid(1.0f, -7.0f, 2.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f))
-                        .uv(0, 0).cuboid(2.0f, -7.0f, 1.0f, 1.0f, 5.0f, 1.0f, Dilation(0.0f)),
-                    ModelTransform.of(-1.0f, 0.0f, 0.0f, 0.0f, -1.5708f, 0.0f)
-                )
                 val srodekbutelki = modelPartData.addChild(
                     "srodekbutelki",
-                    ModelPartBuilder.create().uv(0, 30).cuboid(0.0f, -5.0f, -2.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
-                        .uv(0, 22).cuboid(-1.0f, -6.0f, -3.0f, 3.0f, 3.0f, 3.0f, Dilation(0.0f))
+                    ModelPartBuilder.create().uv(7, 8).cuboid(-3.0f, -8.0f, -3.0f, 5.0f, 7.0f, 5.0f, Dilation(0.0f))
+                        .uv(0, 30).cuboid(0.0f, -5.0f, -2.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
                         .uv(0, 30).cuboid(0.0f, -7.0f, 0.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
+                        .uv(0, 22).cuboid(-3.0f, -4.0f, -3.0f, 3.0f, 3.0f, 3.0f, Dilation(0.0f))
                         .uv(0, 30).cuboid(-2.0f, -3.0f, -2.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
-                        .uv(0, 30).cuboid(-3.0f, -4.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f)),
+                        .uv(0, 22).cuboid(-1.0f, -8.0f, -1.0f, 3.0f, 3.0f, 3.0f, Dilation(0.0f))
+                        .uv(0, 30).cuboid(-3.0f, -4.0f, 1.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
+                        .uv(0, 22).cuboid(-1.0f, -6.0f, -3.0f, 3.0f, 3.0f, 3.0f, Dilation(0.0f)),
                     ModelTransform.pivot(0.0f, 24.0f, 0.0f)
+                )
+                val swiatlo1 = srodekbutelki.addChild(
+                    "swiatlo1",
+                    ModelPartBuilder.create().uv(1, 22).cuboid(-3.0f, -5.0f, 0.0f, 2.0f, 3.0f, 3.0f, Dilation(0.0f)),
+                    ModelTransform.pivot(0.0f, 0.0f, 0.0f)
                 )
                 val bb_main = modelPartData.addChild(
                     "bb_main",
