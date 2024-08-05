@@ -10,6 +10,7 @@ import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleTypes
+import net.minecraft.util.math.Box
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 
@@ -19,7 +20,7 @@ class FirefliesEntity : Entity {
         entityType,
         world
     ) {
-        noClip = true
+        noClip = false
     }
 
     constructor(
@@ -38,6 +39,7 @@ class FirefliesEntity : Entity {
                 dataTracker.set(SIZE, MathHelper.clamp(size, 1, 127))
                 refreshPosition()
                 calculateDimensions()
+                calculateBoundingBox()
             }
         }
 
@@ -95,16 +97,19 @@ class FirefliesEntity : Entity {
         nbt.putInt("Size", size)
     }
 
-    override fun getDimensions(pose: EntityPose): EntityDimensions {
-        return super.getDimensions(pose).scaled(size.toFloat())
+    override fun onTrackedDataSet(data: TrackedData<*>?) {
+        super.onTrackedDataSet(data)
+        if (SIZE == data) {
+            boundingBox = calculateBoundingBox()
+        }
     }
 
-    override fun calculateDimensions() {
-        val d = this.x
-        val e = this.y
-        val f = this.z
-        super.calculateDimensions()
-        this.setPosition(d, e, f)
+    override fun getDimensions(pose: EntityPose): EntityDimensions {
+        return EntityDimensions.changing(size.toFloat(), size.toFloat())
+    }
+
+    override fun calculateBoundingBox(): Box? {
+        return getDimensions(pose).getBoxAt(pos)
     }
 
     companion object {
