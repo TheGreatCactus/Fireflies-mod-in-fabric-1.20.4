@@ -36,6 +36,10 @@ class FirefliesEntity : Entity {
         get() = dataTracker.get(SIZE)
         set(size) {
             if (!world.isClient) {
+                if (size < 1) {
+                    discard()
+                    return
+                }
                 dataTracker.set(SIZE, MathHelper.clamp(size, 1, 127))
                 refreshPosition()
                 calculateDimensions()
@@ -53,7 +57,7 @@ class FirefliesEntity : Entity {
         val i2: Int
         super.tick()
         val bl = dataTracker.get(WAITING)
-        val f = this.dataTracker.get(SIZE).toFloat()
+        val f = size.toFloat()
         if (!world.isClient) return
         if (bl && random.nextBoolean()) {
             return
@@ -62,26 +66,25 @@ class FirefliesEntity : Entity {
             i2 = 2
             g = 0.2f
         } else {
-            i2 = MathHelper.ceil(Math.PI.toFloat() * f * f)
+            i2 = MathHelper.ceil(f*f * 0.025)
             g = f
         }
+
         for (j in 0 until i2) {
             var p: Double
             var o: Double
             var n: Double
-            val h = random.nextFloat() * (Math.PI.toFloat() * 2)
-            val k = MathHelper.sqrt(random.nextFloat()) * g
-            val d = this.x + (MathHelper.cos(h) * k).toDouble()
-            val e = this.y
-            val l = this.z + (MathHelper.sin(h) * k).toDouble()
+            val d: Double = x - size/2 + Math.random() * size
+            val e: Double = y + Math.random() * size
+            val l: Double = z - size/2 + Math.random() * size
             if (bl) {
                 n = 0.0
                 o = 0.0
                 p = 0.0
             } else {
-                n = (0.5 - random.nextDouble()) * 0.15
-                o = 0.01
-                p = (0.5 - random.nextDouble()) * 0.15
+                n = (0.085 - random.nextDouble()) * 0.17
+                o = (0.06 - random.nextDouble()) * 0.12
+                p = (0.085 - random.nextDouble()) * 0.17
             }
             world.addImportantParticle(ParticleTypes.FLAME, d, e, l, n, o, p)
         }
