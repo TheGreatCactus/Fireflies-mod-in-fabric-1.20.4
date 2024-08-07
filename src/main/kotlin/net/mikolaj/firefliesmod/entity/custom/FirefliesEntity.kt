@@ -13,6 +13,7 @@ import net.minecraft.particle.ParticleTypes
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
+import kotlin.math.cbrt
 
 
 class FirefliesEntity : Entity {
@@ -57,7 +58,7 @@ class FirefliesEntity : Entity {
         val i2: Int
         super.tick()
         val bl = dataTracker.get(WAITING)
-        val f = size.toFloat()
+        val f = size.toFloat() / 2 + 1
         if (!world.isClient) return
         if (bl && random.nextBoolean()) {
             return
@@ -74,17 +75,17 @@ class FirefliesEntity : Entity {
             var p: Double
             var o: Double
             var n: Double
-            val d: Double = x - size/2 + Math.random() * size
-            val e: Double = y + Math.random() * size
-            val l: Double = z - size/2 + Math.random() * size
+            val d: Double = x - f/2 + Math.random() * f
+            val e: Double = y + Math.random() * f
+            val l: Double = z - f/2 + Math.random() * f
             if (bl) {
                 n = 0.0
                 o = 0.0
                 p = 0.0
             } else {
-                n = (0.085 - random.nextDouble()) * 0.17
-                o = (0.06 - random.nextDouble()) * 0.12
-                p = (0.085 - random.nextDouble()) * 0.17
+                n = (0.055 - random.nextDouble()) * 0.11 * cbrt(f)
+                o = (0.035 - random.nextDouble()) * 0.07 * cbrt(f)
+                p = (0.055 - random.nextDouble()) * 0.11 * cbrt(f)
             }
             world.addImportantParticle(ParticleTypes.FLAME, d, e, l, n, o, p)
         }
@@ -108,7 +109,7 @@ class FirefliesEntity : Entity {
     }
 
     override fun getDimensions(pose: EntityPose): EntityDimensions {
-        return EntityDimensions.changing(size.toFloat(), size.toFloat())
+        return EntityDimensions.changing(size.toFloat() / 2 + 1, size.toFloat() / 2 + 1)
     }
 
     override fun calculateBoundingBox(): Box? {
